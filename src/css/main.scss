@@ -1,1 +1,296 @@
 /* Your SCSS here. */
+
+$orange: #ff6600;
+$dark: #1b1b1b;
+$light: #f5f5f5;
+$nav-tall: 5rem;
+$nav-short: 3.25rem;
+
+:root {
+    --content-width: 1100px;
+    --section-pad: 4.5rem;
+}
+
+// Centers a stripe's content and caps its width.
+@mixin centered-content {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(1.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: $dark;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0 0 0.75rem;
+}
+
+.container {
+    @include centered-content;
+    text-align: center;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $nav-tall;
+    padding: 0 1.5rem;
+    background: $dark;
+    font-size: 1.25rem;
+    transition: height 0.3s ease, font-size 0.3s ease;
+
+    // Applied by JS once the page is scrolled away from the top.
+    &--shrunk {
+        height: $nav-short;
+        font-size: 0.95rem;
+    }
+
+    &__brand {
+        color: $orange;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    &__menu {
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__link {
+        color: $light;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: color 0.2s ease, border-color 0.2s ease;
+
+        &--active {
+            color: $orange;
+            border-bottom-color: $orange;
+        }
+    }
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    text-align: center;
+    color: $light;
+    // Fixed-position background image, darkened so the heading stays readable.
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("../assets/hero-bg.jpg") center / cover no-repeat fixed;
+
+    &__content {
+        animation: fade-up 1s ease both;
+
+        h1 {
+            font-size: 3.5rem;
+        }
+    }
+}
+
+.section {
+    padding: var(--section-pad) 0;
+    scroll-margin-top: $nav-short;
+
+    &--alt {
+        background: $light;
+    }
+
+    // A full-height last section leaves room to scroll earlier sections under the navbar.
+    &--tall {
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+    }
+}
+
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__slide {
+        display: none;
+        width: 100%;
+        margin: 0;
+
+        // Only the active slide is rendered.
+        &--active {
+            display: block;
+            animation: fade-up 0.5s ease both;
+        }
+
+        img {
+            width: 100%;
+            max-width: 700px;
+            border-radius: 4px;
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        z-index: 1;
+        padding: 0.5rem 0.9rem;
+        border: none;
+        border-radius: 50%;
+        background: $dark;
+        color: $light;
+        font-size: 1.1rem;
+        cursor: pointer;
+
+        &--prev {
+            left: 0;
+        }
+
+        &--next {
+            right: 0;
+        }
+    }
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.card {
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+    i {
+        color: $orange;
+        font-size: 2rem;
+    }
+
+    &__button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        background: $orange;
+        color: #fff;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+.video {
+    width: 100%;
+    max-width: 700px;
+}
+
+.footer {
+    padding: 2rem 0;
+    background: $dark;
+    color: $light;
+
+    &__social {
+        display: flex;
+        justify-content: center;
+        gap: 1.25rem;
+        margin: 0 0 0.5rem;
+        padding: 0;
+        list-style: none;
+        font-size: 1.5rem;
+
+        a {
+            color: $light;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $orange;
+            }
+        }
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+
+    &--open {
+        display: flex;
+    }
+
+    &__box {
+        max-width: 420px;
+        margin: 1.5rem;
+        padding: 1.5rem;
+        border-radius: 4px;
+        background: #fff;
+        animation: fade-up 0.3s ease both;
+    }
+
+    &__close {
+        float: right;
+        border: none;
+        background: none;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+}
+
+// Stack the columns and tighten spacing on narrow or short viewports.
+@media (max-width: 900px) {
+    :root {
+        --section-pad: 3rem;
+    }
+
+    .columns {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__content h1 {
+        font-size: 2.5rem;
+    }
+
+    .navbar {
+        font-size: 1rem;
+
+        &__menu {
+            gap: 1rem;
+        }
+    }
+}

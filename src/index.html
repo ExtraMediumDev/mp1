@@ -4,10 +4,128 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MP1</title>
+        <title>About Y Combinator</title>
+        <!-- FontAwesome supplies the scalable vector icons used below. -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     </head>
     <body>
-        <h1>Hello World! Welcome to MP1!</h1>
-        <img src="assets/image.jpg">
+        <nav class="navbar" id="navbar">
+            <a class="navbar__brand" href="#hero">YC</a>
+            <ul class="navbar__menu">
+                <li><a class="navbar__link" href="#about">About</a></li>
+                <li><a class="navbar__link" href="#batch">Batch</a></li>
+                <li><a class="navbar__link" href="#programs">Programs</a></li>
+                <li><a class="navbar__link" href="#video">Video</a></li>
+            </ul>
+        </nav>
+
+        <header class="hero" id="hero">
+            <div class="hero__content">
+                <h1>Y Combinator</h1>
+                <p>Make something people want.</p>
+            </div>
+        </header>
+
+        <section class="section" id="about">
+            <div class="container">
+                <h2>About</h2>
+                <p>
+                    Y Combinator is a startup accelerator founded in 2005 that invests a fixed
+                    amount in early-stage companies and runs them through a three-month program.
+                    Each batch ends in Demo Day, where founders present to investors.
+                </p>
+            </div>
+        </section>
+
+        <section class="section section--alt" id="batch">
+            <div class="container">
+                <h2>Batch Highlights</h2>
+                <div class="carousel">
+                    <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Previous slide">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <figure class="carousel__slide">
+                        <img src="assets/slide-1.png" alt="Airbnb founders outside Y Combinator">
+                        <figcaption>Airbnb: Winter 2009</figcaption>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <img src="assets/slide-2.png" alt="Paul Graham on stage with a founder">
+                        <figcaption>Stripe: Summer 2009</figcaption>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <img src="assets/slide-3.jpg" alt="Dropbox founders during their batch">
+                        <figcaption>Dropbox: Summer 2007</figcaption>
+                    </figure>
+                    <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Next slide">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="programs">
+            <div class="container">
+                <h2>Programs</h2>
+                <div class="columns">
+                    <article class="card">
+                        <i class="fa-solid fa-rocket"></i>
+                        <h3>Core Program</h3>
+                        <p>Three months of group office hours, weekly dinners, and Demo Day.</p>
+                        <button class="card__button" type="button" data-title="Core Program"
+                            data-body="Founders relocate for the batch, meet weekly with a group partner, and finish with Demo Day in front of investors.">
+                            Learn more
+                        </button>
+                    </article>
+                    <article class="card">
+                        <i class="fa-solid fa-seedling"></i>
+                        <h3>Startup School</h3>
+                        <p>A free online course covering the basics of starting a company.</p>
+                        <button class="card__button" type="button" data-title="Startup School"
+                            data-body="Open to anyone, Startup School distills YC's curriculum into recorded lectures and founder community forums.">
+                            Learn more
+                        </button>
+                    </article>
+                    <article class="card">
+                        <i class="fa-solid fa-users"></i>
+                        <h3>Alumni Network</h3>
+                        <p>Ongoing access to thousands of founders after the batch ends.</p>
+                        <button class="card__button" type="button" data-title="Alumni Network"
+                            data-body="Alumni keep access to internal forums, deal discounts, and later-stage funding introductions for life.">
+                            Learn more
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt section--tall" id="video">
+            <div class="container">
+                <h2>How to Apply</h2>
+                <video class="video" controls>
+                    <source src="assets/yc.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <ul class="footer__social">
+                    <li><a href="https://x.com/ycombinator" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/y-combinator" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
+                    <li><a href="https://github.com/ycombinator" aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="https://www.youtube.com/@ycombinator" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></li>
+                </ul>
+                <p>CS409 MP1: Brian Li</p>
+            </div>
+        </footer>
+
+        <div class="modal" id="modal">
+            <div class="modal__box">
+                <button class="modal__close" type="button" aria-label="Close">&times;</button>
+                <h3 id="modal-title"></h3>
+                <p id="modal-body"></p>
+            </div>
+        </div>
     </body>
 </html>
